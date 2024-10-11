@@ -1,7 +1,7 @@
 const Integration = require("../models/Integration");
 const axios = require("axios");
 
-exports.storeAuthDetails = async (profile, accessToken) => {
+const storeAuthDetails = async (profile, accessToken) => {
   const existingIntegration = await Integration.findOne({
     githubId: profile.id,
   });
