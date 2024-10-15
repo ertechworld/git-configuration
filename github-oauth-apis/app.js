@@ -4,8 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
 const authRoutes = require("./routes/auth");
-
-console.log("process.env.PORT", process.env.PORT);
+const gitRoutes = require("./routes/github");
 
 const app = express();
 app.use(express.json());
@@ -24,6 +23,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/auth", authRoutes);
+app.use("/github", gitRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

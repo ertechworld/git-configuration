@@ -50,7 +50,7 @@ exports.githubAuth = (req, res) => {
   const redirectUri = encodeURIComponent(
     "http://localhost:3000/auth/github/callback"
   );
-  const scope = "user:email";
+  const scope = "read:org user email repo";
   res.redirect(
     `${githubAuthUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`
   );
@@ -84,7 +84,6 @@ exports.githubCallback = async (req, res) => {
       });
 
       const userProfile = userResponse.data;
-      console.log("GitHub user profile:", userProfile);
       await storeAuthDetails(userProfile, accessToken);
       res.redirect(`http://localhost:4200/integration?id=${userProfile.id}`);
     } else {

@@ -7,17 +7,17 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GithubIntegrationService } from 'src/app/services/github-integration.service';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AgGridModule } from 'ag-grid-angular';
 const routes: Routes = [
   { path: '', component: IntegrationComponent }
 ];
 
 @NgModule({
   declarations: [
-    IntegrationComponent
+    IntegrationComponent,
   ],
   imports: [
     CommonModule,
@@ -28,8 +28,9 @@ const routes: Routes = [
     MatExpansionModule,
     MatIconModule,
     MatSnackBarModule,
-    RouterModule.forChild(routes)  // Configure lazy-loaded route
+    AgGridModule,
+    RouterModule.forChild(routes)
   ],
-  providers:[GithubIntegrationService]
+  providers: [GithubIntegrationService]
 })
 export class IntegrationModule { }
